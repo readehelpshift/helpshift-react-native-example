@@ -2926,10 +2926,10 @@ has@^1.0.1, has@^1.0.3:
   dependencies:
     function-bind "^1.1.1"
 
-helpshift-react-native@^0.0.1-b:
-  version "0.0.1-b"
-  resolved "https://registry.yarnpkg.com/helpshift-react-native/-/helpshift-react-native-0.0.1-b.tgz#ac6d672a14a12d4bc975efb01c8a7920db449f02"
-  integrity sha512-7iHArmhvPAgrz5X1fOXuRQZQaIClMgqmgQ98t77F971BkiciG58gDzFJgLRbc1kmN6DzsvAY4KV+j+Yv7dUJsA==
+helpshift-react-native@^0.0.1-c:
+  version "0.0.1-c"
+  resolved "https://registry.yarnpkg.com/helpshift-react-native/-/helpshift-react-native-0.0.1-c.tgz#b91c5ec081d677ddd32ab5ea7a681309f49c1ba6"
+  integrity sha512-QzVzSJRzl8kuKh16hGF2gATCjQRh9y82U5cqcD/NWSVk8YvYShRKitKGsC99ztXCSPu26dVaYVN/2kGr4nhUPA==
 
 hermesvm@^0.1.0:
   version "0.1.0"

@@ -19,20 +19,29 @@ import {
 } from 'react-native';
 
 import Helpshift from 'helpshift-react-native'
-import HelpshiftConfig from './helpshift.config.json'
+import {
+  HELPSHIFT_API_KEY,
+  HELPSHIFT_DOMAIN,
+  HELPSHIFT_IOS_APP_ID,
+  HELPSHIFT_ANDROID_APP_ID
+} from './helpshift.config.json'
 
 type Props = {};
 export default class App extends Component<Props> {
 
   componentDidMount() {
-    Helpshift.init(
-      HelpshiftConfig['HELPSHIFT_API_KEY'],
-      HelpshiftConfig['HELPSHIFT_DOMAIN'],
-      Platform.select({
-        ios: HelpshiftConfig['HELPSHIFT_IOS_APP_ID'],
-        android: HelpshiftConfig['HELPSHIFT_ANDROID_APP_ID']
-      })
-    );
+    if (!HELPSHIFT_API_KEY || !HELPSHIFT_DOMAIN) alert('Add config to helpshift.config.json!')
+    else {
+      Helpshift.init(
+        HELPSHIFT_API_KEY,
+        HELPSHIFT_DOMAIN,
+        Platform.select({ 
+          ios: HELPSHIFT_IOS_APP_ID,
+          android: HELPSHIFT_ANDROID_APP_ID
+        })
+      );      
+    }
+
   }
 
   render() {
