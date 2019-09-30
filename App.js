@@ -10,15 +10,18 @@
 
 import React, {Component} from 'react';
 import {
+  AppState,
   Platform,
   StyleSheet,
   View,
   TouchableOpacity,
   Text,
-  NativeModules
+  Dimensions
 } from 'react-native';
 
-import Helpshift from 'helpshift-react-native'
+import Helpshift from 'helpshift-react-native';
+import IconBadge from 'react-native-icon-badge';
+
 import {
   HELPSHIFT_API_KEY,
   HELPSHIFT_DOMAIN,
@@ -26,37 +29,87 @@ import {
   HELPSHIFT_ANDROID_APP_ID
 } from './helpshift.config.json'
 
+const cifs = {
+  'verified': ['b', 'true'],
+  'number_of_rides': ['n', '12'],
+  'street': ['sl', '343 sansome']
+}
+
+const user = {
+  name: 'Test Person',
+  email: "test@person.com",
+  identifier: 'testperson1',
+  // authToken: 'iR20RTW0IRw0+MexN2wgb89Pj/ih1FZHEg+++SIKvxY='
+}
+
+const config = {
+  apiKey: HELPSHIFT_API_KEY,
+  domain: HELPSHIFT_DOMAIN,
+  appId: Platform.select({ ios: HELPSHIFT_IOS_APP_ID, android: HELPSHIFT_ANDROID_APP_ID }),
+  width: Dimensions.get('window').width,
+  height: Dimensions.get('window').height - 300,
+  user: user,
+  cifs: cifs
+}
+
 type Props = {};
 export default class App extends Component<Props> {
 
+  constructor(props){
+    super(props);
+
+    this.state = {
+      showChat: false,
+      unreadMessages: 0
+    }
+  }
+
   componentDidMount() {
     if (!HELPSHIFT_API_KEY || !HELPSHIFT_DOMAIN) alert('Add config to helpshift.config.json!')
-    else {
-      Helpshift.init(
-        HELPSHIFT_API_KEY,
-        HELPSHIFT_DOMAIN,
-        Platform.select({ 
-          ios: HELPSHIFT_IOS_APP_ID,
-          android: HELPSHIFT_ANDROID_APP_ID
-        })
-      );      
-    }
+    AppState.addEventListener('change', nextAppState => this._handleAppStateChange(nextAppState));
+    this._getUnreadMessagesCount();
+  }
 
+  componentWillUnmount() {
+    AppState.removeEventListener('change', nextAppState => this._handleAppStateChange(nextAppState));
+  }
+
+  _handleAppStateChange(nextAppState){
+    if ( nextAppState === 'active' ) {
+      this._getUnreadMessagesCount();
+    }
+  };
+
+  async _getUnreadMessagesCount(){
+    let count = await Helpshift.requestUnreadMessagesCount();
+    this.setState({ unreadMessages: count });
   }
 
   render() {
     return (
       <View style={styles.container}>
-          <TouchableOpacity onPress={() => Helpshift.showConversation()}>
-            <View style={styles.button}>
-              <Text style={styles.buttonText}>Chat with Support</Text>
-            </View>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => Helpshift.showFAQs()}>
-            <View style={styles.button}>
-              <Text style={styles.buttonText}>Show FAQs</Text>
-            </View>
-          </TouchableOpacity>
+
+        <TouchableOpacity onPress={() => this.setState({ showChat: !this.state.showChat, unreadMessages: 0 })}>
+          <View style={styles.button}>
+            <Text style={styles.buttonText}>{`${this.state.showChat ? "Hide" : "Show"} Chat`}</Text>
+          </View>
+        </TouchableOpacity>
+
+        {this.state.showChat ? <Helpshift config={config} style={{ flex: 1, height: Dimensions.get('window').height - 300, width: Dimensions.get('window').width }} /> : null}
+
+        <IconBadge
+          MainElement={
+            <View style={{
+              backgroundColor:'#489EFE',
+              width:50,
+              height:50,
+              margin:6
+            }}/>
+          }
+          BadgeElement={ <Text style={{color:'#FFFFFF'}}>{this.state.unreadMessages}</Text> }
+          IconBadgeStyle={{width:30, height:30, backgroundColor: '#FF00EE'}}
+        />
+
       </View>
     )
   }
@@ -65,14 +118,15 @@ export default class App extends Component<Props> {
   const styles = StyleSheet.create({
     container: {
       flex: 1,
-      justifyContent: 'center',
-      alignItems: 'center'
+      alignItems: 'center',
+      justifyContent: 'center'
     },
     button: {
       height: 50,
       backgroundColor: '#313840',
       alignItems: 'center',
       justifyContent: 'center',
+      marginTop: 50,
       marginBottom: 50,
       width: 275,
     },
