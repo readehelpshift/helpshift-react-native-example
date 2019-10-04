@@ -9,8 +9,8 @@
   },
   "dependencies": {
     "helpshift-react-native": "readehelpshift/helpshift-react-native",
-    "react": "16.8.6",
-    "react-native": "0.60.5",
+    "react": "16.9",
+    "react-native": "^0.61.2",
     "react-native-icon-badge": "^1.1.3"
   },
   "devDependencies": {
