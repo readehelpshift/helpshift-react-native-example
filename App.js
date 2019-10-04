@@ -67,11 +67,13 @@ export default class App extends Component<Props> {
   componentDidMount() {
     if (!HELPSHIFT_API_KEY || !HELPSHIFT_DOMAIN) alert('Add config to helpshift.config.json!')
     AppState.addEventListener('change', nextAppState => this._handleAppStateChange(nextAppState));
+    Helpshift.eventEmitter.addListener('Helpshift/SessionEnded', () => this.setState({ showChat: false }));
     this._getUnreadMessagesCount();
   }
 
   componentWillUnmount() {
     AppState.removeEventListener('change', nextAppState => this._handleAppStateChange(nextAppState));
+    Helpshift.eventEmitter.removeListener('Helpshift/SessionEnded', () => this.setState({ showChat: false }));
   }
 
   _handleAppStateChange(nextAppState){
@@ -89,7 +91,7 @@ export default class App extends Component<Props> {
     return (
       <View style={styles.container}>
 
-        <TouchableOpacity onPress={() => this.setState({ showChat: !this.state.showChat, unreadMessages: 0 })}>
+        <TouchableOpacity onPress={() => this.setState({ showChat: !this.state.showChat, unreadMessages: !this.state.showChat ? 0 : this.state.unreadMessages })}>
           <View style={styles.button}>
             <Text style={styles.buttonText}>{`${this.state.showChat ? "Hide" : "Show"} Chat`}</Text>
           </View>
