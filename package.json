@@ -11,6 +11,7 @@
     "helpshift-react-native": "readehelpshift/helpshift-react-native",
     "react": "16.9",
     "react-native": "^0.61.2",
+    "react-native-gesture-handler": "^1.5.1",
     "react-native-icon-badge": "^1.1.3"
   },
   "devDependencies": {

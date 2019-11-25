@@ -12,6 +12,7 @@
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		57D51FA7F7E5B013F29F60C4 /* libPods-HelpshiftRNExample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C7BADE42C5AFC47195F7559D /* libPods-HelpshiftRNExample.a */; };
+		66F09429237DDC1000E3A420 /* HelpshiftCustomLocalization.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 66F09428237DDC1000E3A420 /* HelpshiftCustomLocalization.bundle */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		27DF6020E1845E24272AF86A /* Pods-HelpshiftRNExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HelpshiftRNExample.debug.xcconfig"; path = "Target Support Files/Pods-HelpshiftRNExample/Pods-HelpshiftRNExample.debug.xcconfig"; sourceTree = "<group>"; };
 		666B45C52333EA7A009F7EAE /* HelpshiftRNExample.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = HelpshiftRNExample.entitlements; path = HelpshiftRNExample/HelpshiftRNExample.entitlements; sourceTree = "<group>"; };
 		66D91701230F367200115991 /* libreact-native-config.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = "libreact-native-config.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		66F09428237DDC1000E3A420 /* HelpshiftCustomLocalization.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = HelpshiftCustomLocalization.bundle; sourceTree = "<group>"; };
 		73EA80B4AAD94FB0A38135C0 /* libReactNativeConfig.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libReactNativeConfig.a; sourceTree = "<group>"; };
 		C7BADE42C5AFC47195F7559D /* libPods-HelpshiftRNExample.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-HelpshiftRNExample.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D37DEA27BA0F0FFEEB100867 /* Pods-HelpshiftRNExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HelpshiftRNExample.release.xcconfig"; path = "Target Support Files/Pods-HelpshiftRNExample/Pods-HelpshiftRNExample.release.xcconfig"; sourceTree = "<group>"; };
@@ -89,6 +91,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				66F09428237DDC1000E3A420 /* HelpshiftCustomLocalization.bundle */,
 				13B07FAE1A68108700A75B9A /* HelpshiftRNExample */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				83CBBA001A601CBA00E9B192 /* Products */,
@@ -188,6 +191,7 @@
 			files = (
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
+				66F09429237DDC1000E3A420 /* HelpshiftCustomLocalization.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -237,11 +241,12 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-HelpshiftRNExample/Pods-HelpshiftRNExample-resources.sh",
-				"${PODS_ROOT}/Helpshift/helpshift-sdk-ios-v7.6.2/HsUIResources.bundle",
-				"${PODS_ROOT}/Helpshift/helpshift-sdk-ios-v7.6.2/HsLocalization.bundle",
-				"${PODS_ROOT}/Helpshift/helpshift-sdk-ios-v7.6.2/HSThemes/HelpshiftConfig.plist",
-				"${PODS_ROOT}/Helpshift/helpshift-sdk-ios-v7.6.2/HSThemes/HelpshiftConfigDark.plist",
-				"${PODS_ROOT}/Helpshift/helpshift-sdk-ios-v7.6.2/HSThemes/HelpshiftConfigHighContrast.plist",
+				"${PODS_ROOT}/Helpshift/helpshift-sdk-ios-v7.6.3/HsUIResources.bundle",
+				"${PODS_ROOT}/Helpshift/helpshift-sdk-ios-v7.6.3/HsLocalization.bundle",
+				"${PODS_ROOT}/Helpshift/helpshift-sdk-ios-v7.6.3/HSThemes/HelpshiftConfig.plist",
+				"${PODS_ROOT}/Helpshift/helpshift-sdk-ios-v7.6.3/HSThemes/HelpshiftConfigDark.plist",
+				"${PODS_ROOT}/Helpshift/helpshift-sdk-ios-v7.6.3/HSThemes/HelpshiftConfigDarkHighContrast.plist",
+				"${PODS_ROOT}/Helpshift/helpshift-sdk-ios-v7.6.3/HSThemes/HelpshiftConfigHighContrast.plist",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
@@ -249,6 +254,7 @@
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/HsLocalization.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/HelpshiftConfig.plist",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/HelpshiftConfigDark.plist",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/HelpshiftConfigDarkHighContrast.plist",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/HelpshiftConfigHighContrast.plist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
