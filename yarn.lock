@@ -2920,7 +2920,7 @@ has@^1.0.1, has@^1.0.3:
 
 helpshift-react-native@readehelpshift/helpshift-react-native:
   version "7.6.2"
-  resolved "https://codeload.github.com/readehelpshift/helpshift-react-native/tar.gz/25123412aa60cdb058e108ae61c49632d2721240"
+  resolved "https://codeload.github.com/readehelpshift/helpshift-react-native/tar.gz/b355961831cf03618a62e63ef5b22e16c93ef2bf"
   dependencies:
     prop-types "^15.7.2"
 
